@@ -15,18 +15,19 @@ pipeline {
             }
         }
         
-        // stage('Build') {
-        //     steps {
-        //         // Clean and package the application using Maven
-        //         sh 'npm init -y '
-        //     }
-        // }
+        stage('Build') {
+            steps {
+                // Clean and package the application using Maven
+                sh cd /var/lib/jenkins/workspace/Dockerized_My_Nodejs
+                sh 'npm init -y '
+            }
+        }
 
-        // stage('Test') {
-        //     steps {
-        //         sh 'npm install'
-        //     }
-        // }
+        stage('Test') {
+            steps {
+                sh 'npm install'
+            }
+        }
 
         stage('Build Docker Image') {
             steps {

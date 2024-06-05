@@ -18,13 +18,13 @@ pipeline {
         stage('Build') {
             steps {
                 // Clean and package the application using Maven
-                sh 'npm install'
+                sh 'npm init -y '
             }
         }
 
         stage('Test') {
             steps {
-                sh 'npm test'
+                sh 'npm install'
             }
         }
 

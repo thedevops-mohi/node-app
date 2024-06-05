@@ -5,13 +5,13 @@ pipeline {
 
     environment {
         // Docker Hub repository name
-        DOCKER_HUB_REPO = 'auwalu5/mohi-java'
+        DOCKER_HUB_REPO = 'auwalu5/mohi-nodejs'
     }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/thedevops-mohi/java-app.git'
+                git branch: 'main', url: 'https://github.com/thedevops-mohi/node-app.git'
             }
         }
         
@@ -19,6 +19,12 @@ pipeline {
             steps {
                 // Clean and package the application using Maven
                 sh 'npm install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'npm test'
             }
         }
 

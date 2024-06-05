@@ -33,6 +33,7 @@ pipeline {
             steps {
                 script {
                     // Build the Docker image
+                    sh cd /var/lib/jenkins/workspace/Dockerized_My_Nodejs
                     sh "docker build -t ${DOCKER_HUB_REPO}:latest ."
                 }
             }
@@ -42,6 +43,7 @@ pipeline {
             steps {
                 script {
                     // Log in to Docker Hub
+                    sh cd /var/lib/jenkins/workspace/Dockerized_My_Nodejs
                     withCredentials([usernamePassword(credentialsId: 'DOCKER_HUB_CREDENTIALS', usernameVariable: 'dockerhub_username', passwordVariable: 'dockerhub_password')]) {
                         sh 'echo $dockerhub_password | docker login -u $dockerhub_username --password-stdin'
                     }
